@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+document.onclick=function(ev)
+{
+	//ie
+	//alert(event.clientX+','+event.clientY)
+
+	//FF
+	// alert(ev.clientX+','+ev.clientY);
+	
+	var oEvent = ev||event;
+
+	alert(oEvent.clientX+','+oEvent.clientY);
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>firstchild</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+window.onload =function()
+{
+	var oUl = document.getElementById('ul1');
+	//ie
+	//oUl.firstChild.style.background ='red';
+
+	//ff
+	//oUl.firstElementChild.style.background ='red';
+
+	//兼容性问题解决
+	
+	var oFirst = oUl.firstElementChild||oUl. firstChild;//或者符号有问题，不会打
+	oFirst.style.background ='red';
+
+
+	
+</script>
+<ul id="ul1">
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+	#div1{width: 100px; height: 100px; background: red; position: absolute;left: 0px;}
+	</style>
+	<script type="text/javascript">
+	var timer = null;
+	function startMove(iTager)
+	{
+
+		var oDiv = document.getElementById('div1');
+
+		clearInterval(timer);
+
+		timer=setInterval(function()
+		{
+			var iSpeed =(iTager- oDiv.offsetLeft)/8;
+			iSpeed = Math.ceil(iSpeed);
+			
+
+		if (oDiv.offsetLeft>=iTager)
+			 {
+			 	clearInterval(timer);
+			 }
+			
+		else
+		{
+			oDiv.style.left = oDiv.offsetLeft+iSpeed+'px';
+		}
+
+		},30);
+	}
+	</script>
+	</script>
+</head>
+<body>
+<input type="button" name="" value="开始运动" onclick='startMove(300)'>
+<div id="div1" ></div>
+<span style="width: 1px; height: 200px ; left: 300px; background: black; position: absolute;"></span>
+
+</body>
+</html>

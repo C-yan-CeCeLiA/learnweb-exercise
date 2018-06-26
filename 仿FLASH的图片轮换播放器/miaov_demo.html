@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>仿FLASH的图片轮换效果 —— www.miaov.com 妙味课堂</title>
+<link rel="stylesheet" type="text/css" href="miao_style.css">
+<script >
+function getStyle(obj, attr)
+{
+	if(obj.currentStyle)
+	{
+		return obj.currentStyle[attr];
+	}
+	else
+	{
+		return getComputedStyle(obj, false)[attr];
+	}
+}
+
+function startMove(obj, attr, iTarget)
+{
+	clearInterval(obj.timer);
+	obj.timer=setInterval(function (){
+		var iCur=0;
+		if (attr=='opacity')
+		 {
+		 	iCur=parseInt(parseFloat(getStyle(obj,attr))*100);
+		 }
+		 else
+		 {
+		 	iCur=parseInt(getStyle(obj, attr));
+		 }
+
+		var iSpeed=(iTarget-iCur)/8;
+		iSpeed=iSpeed>0?Math.ceil(iSpeed):Math.floor(iSpeed);
+		
+		if(iCur==iTarget)
+		{
+			clearInterval(obj.timer);
+		}
+		else
+		{
+			if (attr=='opacity')
+			 {
+			 	obj.style.filter = 'alpha(opacity:'+(iCur+iSpeed)+')';
+			 	obj.style.opacity = (iCur+iSpeed)/100;
+
+			 }
+			else
+			{
+				obj.style[attr]=iCur+iSpeed+'px';
+			}
+			
+		}
+	}, 30)
+}
+
+</script>
+<script>
+function getbyClass(oParent,sClass)
+ {
+	var aEle = document.getElementsByTagName('*');
+	var i= 0;
+	
+	var aResult=[];
+	for(i=0; i<aEle.length;i++)
+	{
+		if (aEle[i].className == sClass)
+		 {
+		 	aResult.push(aEle[i]);
+		 }
+	}
+	return aResult;
+};
+window.onload=function ()
+{
+	var oDiv=document.getElementById('playeimages');
+	var oBtnPrev=getByClass(oDiv, 'prev')[0];
+	var oBtnNext=getByClass(oDiv, 'next')[0];
+	var oMarkLeft=getByClass(oDiv, 'mark_left')[0];
+	var oMarkRight=getByClass(oDiv, 'mark_right')[0];
+	
+	var oSmallUl=getByClass(oDiv, 'small_pic')[0].getElementsByTagName('ul')[0];
+	var aSmallLi=oSmallUl.getElementsByTagName('li');
+	var oBigUl=getByClass(oDiv, 'big_pic')[0];
+	var aBigLi=oBigUl.getElementsByTagName('li');
+	var iNow=0;
+	var iMinZindex=2;
+	var i=0;
+	
+	oSmallUl.style.width=aSmallLi.length*aSmallLi[0].offsetWidth+'px';
+	
+	//上面的左右按钮
+	oBtnPrev.onmouseover=oMarkLeft.onmouseover=function ()
+	{
+		startMove(oBtnPrev, 'opacity', 100);
+	}
+	
+	oBtnPrev.onmouseout=oMarkLeft.onmouseout=function ()
+	{
+		startMove(oBtnPrev, 'opacity', 0);
+	}
+	
+	oBtnNext.onmouseover=oMarkRight.onmouseover=function ()
+	{
+		startMove(oBtnNext, 'opacity', 100);
+	}
+	
+	oBtnNext.onmouseout=oMarkRight.onmouseout=function ()
+	{
+		startMove(oBtnNext, 'opacity', 0);
+	}
+
+	//小图点击，大图显示
+	for(i=0;i<aSmallLi.length;i++)
+	{
+		aSmallLi[i].index=i;
+		aSmallLi[i].onmouseover=function ()
+		{
+			startMove(this, 'opacity', 100);
+		}
+		aSmallLi[i].onmouseout=function ()
+		{
+			if(this.index!=iNow)
+			{
+				startMove(this, 'opacity', 60);
+			}
+		}
+		
+
+
+}
+
+</script>
+</head>
+
+<body>
+<div id="playimages" class="play">
+    <ul class="big_pic">
+		<div class="prev"></div>
+		<div class="next"></div>
+
+		<div class="text">加载图片说明……</div>
+		<div class="length">计算图片数量……</div>
+		
+		<a class="mark_left" href="javascript:;"></a>
+		<a class="mark_right" href="javascript:;"></a>
+		<div class="bg"></div>
+		
+        <li style="z-index:1;"><img src="images/1.jpg" /></li>
+        <li><img src="images/2.jpg" /></li>
+        <li><img src="images/3.jpg" /></li>
+        <li><img src="images/4.jpg" /></li>
+        <li><img src="images/5.jpg" /></li>
+        <li><img src="images/6.jpg" /></li>
+    </ul>
+    <div class="small_pic">
+        <ul style="width:390px;">
+            <li style="filter: 100; opacity: 1;"><img src="images/1.jpg" /></li>
+            <li><img src="images/2.jpg" /></li>
+            <li><img src="images/3.jpg" /></li>
+            <li><img src="images/4.jpg" /></li>
+            <li><img src="images/5.jpg" /></li>
+            <li><img src="images/6.jpg" /></li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

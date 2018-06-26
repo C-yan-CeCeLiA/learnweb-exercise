@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>css函数</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		#div1{width: 100px; height: 100px;background: red;}
+	</style>
+	<script type="text/javascript">
+	function getStyle(obj,attr)
+	{
+		if (obj.currenStyle) 
+		{
+			return obj.currenStyle[attr];
+		}
+		else
+		{
+			return getComputdStyle(obj,false)[attr];
+		}
+	}
+	function css(obj,attr,value)
+	{
+		if (arguments.length==2)
+		 {
+		 	return getStyle(obj,attr);
+
+
+		 }
+		 else if(arguments.length==3)
+		 {
+			obj.style[attr] = value;		 	
+		 }
+	}
+
+
+	window.onload=function()
+	{
+		var oBtn = document.getElementById('btn1');
+		var oDiv = document.getElementById('div1');
+		oBtn onclick = function()
+		{
+			css(oDiv,'background','green');
+			alert(css(oDiv,'width'));
+
+		}
+
+	}
+
+	</script>
+</head>
+<body>
+<input type="button" value="设置" id="btn1">
+<div id="div1"></div>
+
+</body>
+</html>
+

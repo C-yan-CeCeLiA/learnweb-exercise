@@ -1,0 +1,61 @@
+	<!DOCTYPE html>
+<html>
+<head>
+	<title>时钟效果</title>
+	<meta charset="utf-8">
+</head>
+<body style="background: blue; color: white;font-size: 50px">
+<script>
+function toDouble(num)
+{
+	if(num<10)
+	{
+		return '0'+num	
+	}
+	else
+	{
+		return '' +num	
+	}
+}
+
+window.onload= function()
+
+
+{
+	var aImg = document.getElementsByTagName("img");
+	var i =0;
+	
+	function UpdateTime()
+	{
+		var oDate = new Date;
+		var str = ""+ toDouble(oDate.getHours())+toDouble(oDate.getMinutes())+toDouble( oDate.getSeconds());
+		
+		for(i=0;i<aImg.length;i++)
+		{
+			
+			
+			aImg[i].src = "img"+str.charAt(i)+"/.png"
+			
+		}
+	}
+	
+	setInterval(UpdateTime,1000)
+	UpdateTime();
+}
+
+
+</script>
+
+
+点
+<img src="img/0.png"/>
+<img src="img/0.png"/>
+分
+<img src="img/0.png"/>
+<img src="img/0.png"/>
+秒
+<img src="img/0.png"/>
+<img src="img/0.png"/>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+/*工厂：
+	原料
+	加工
+	出厂
+工厂模式  
+	问题：浪费资源；
+		没有new；*/
+		//解决浪费资源问题
+	//构造函数 首字母大写， 	
+function CreatPerson(name,sex)
+{	
+	//属性 每个个不相同
+	this.name = name;
+	this.sex = sex;
+}
+//方法 ：所有对象都一样
+CreatPerson.prototype.showName = function()
+{
+	alert('我的名字是'+this.name);
+}
+CreatPerson.prototype.showSex = function()
+{
+	alert('我是'+this.sex+'的')
+};
+
+var p1 = new creatPerson('那么','女');
+var p2  =new creatPerson('是','男');
+
+p1.showSex();
+p1.showName();
+p2.showSex();
+p2.showName();
+
+alert(p1.showName() == p2.showName())
+
+</script>
+</head>
+
+<body>
+</body>
+</html>

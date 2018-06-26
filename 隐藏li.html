@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>dom</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+window.onload =function()
+{
+	var aA = document.getElementsByTagName('a');
+	var i = 0;
+		for (i=0;i<aA.length;i++)
+		{
+			aA[i].onclick = function()
+			{
+				this.parentNode.style.display = 'none';
+			}
+
+		}
+	
+
+}
+
+	
+</script>
+
+
+	<li>第三个<a href="javascript:;">隐藏</a></li>
+	<li>定时关机看多少 <a href="javascript:;">隐藏</a></li>
+	<li>电话规范化<a href="javascript:;">隐藏</a></li>
+	<li>电话规范化<a href="javascript:;">隐藏</a></li>
+
+
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>创建元素和子节点</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+window.onload = function()
+{
+	var oBtn = document.getElementById('btn1');
+	var oUl = document.getElementById('ull');
+	var oTxt = document.getElementById('txt1');
+
+	oBtn.onclick= function()
+	{
+		var oLi = document.createElement('li');//创建元素  （）里填要创建的元素；
+		//创建变量oli存贮创建的元素；
+		oLi.innerHTML = oTxt.value;
+		oUl.appendChild(oLi); // 在oul 父节点下创建子节点
+
+
+	}
+}
+
+
+</script>
+<input type="text" id="txt1">
+<input id="btn1" type="button"  value="创建li">
+<ul id="ull">
+	<li>aa</li>
+</ul>
+
+</body>
+</html>

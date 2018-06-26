@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+	function setCookie(Name,Value,iDate)
+	{
+		var oDate =new Date();
+		oDate.setDate(oDate.getDate()+iDate);
+
+		document.cookie = Name + '='+ Value +';expires='+oDate;
+
+	}
+
+	// var oDate = new Date();
+	// oDate.setDate(oDate.getDate()+30);
+
+	// document.cookie = 'user = blue; expires='+oDate;
+	// document.cookie = 'pass = 123';
+
+	// alert(document.cookie)
+
+	setCookie('username','blue',30);
+	</script>
+
+
+
+</head>
+<body>
+
+
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>最前插入</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+window.onload = function()
+{
+	var oBtn = document.getElementById('btn1');
+	var oUl = document.getElementById('ull');
+	var oTxt = document.getElementById('txt1');
+
+	oBtn.onclick= function()
+	{
+		var oLi = document.createElement('li');
+		var aLi = oUl.getElementsByTagName('li');
+
+		
+		oLi.innerHTML = oTxt.value;
+	
+		if (aLi.length==0)
+		 {
+		 	oUl.appendChild(oLi);
+		 }
+		 else
+		 {
+		 	oUl.insertBefore(oLi,aLi[0]);
+		 }
+
+		
+	
+
+
+
+	}
+}
+
+
+</script>
+<input type="text" id="txt1">
+<input id="btn1" type="button"  value="创建li">
+<ul id="ull">
+	<li>aa</li>
+</ul>
+
+</body>
+</html>
